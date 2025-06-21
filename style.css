@@ -1,0 +1,130 @@
+/* style.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#ludo-game {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+#game-board {
+    display: grid;
+    /* This defines our Ludo board grid. Ludo is usually 15x15 squares visually. */
+    /* We'll simplify for demonstration, but a full board would be more complex. */
+    grid-template-columns: repeat(15, 40px); /* 15 columns, each 40px wide */
+    grid-template-rows: repeat(15, 40px);    /* 15 rows, each 40px high */
+    border: 2px solid #333;
+    width: 600px; /* 15 * 40px */
+    height: 600px; /* 15 * 40px */
+    margin: 20px auto;
+    position: relative; /* For absolute positioning of pawns later */
+}
+
+/* Basic styling for board cells (you'd have many more specific styles) */
+.path-cell, .home-area, .center-finish-area {
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Positioning specific parts of the Ludo board using grid-column and grid-row */
+/* This is highly simplified. A full Ludo board is much more intricate with CSS Grid. */
+/* You'd need to map out each cell's grid-column and grid-row properties precisely. */
+
+/* Example: Red Home Area (top-left 6x6 square) */
+.home-area.red {
+    background-color: #ffcccc; /* Light red */
+    grid-column: 1 / span 6; /* From column 1, span 6 columns */
+    grid-row: 1 / span 6;    /* From row 1, span 6 rows */
+    border-radius: 10px; /* Make it look like a rounded area */
+}
+
+/* Example: Green Home Area (top-right 6x6 square) */
+.home-area.green {
+    background-color: #ccffcc; /* Light green */
+    grid-column: 10 / span 6; /* From column 10, span 6 columns (adjust based on your grid) */
+    grid-row: 1 / span 6;
+    border-radius: 10px;
+}
+/* ... and so on for Yellow and Blue home areas */
+
+/* Center finish area (often 3x3 or 4x4 in the middle) */
+.center-finish-area {
+    background-color: #eee;
+    /* Center it: (15 - 3)/2 + 1 = 7. Columns 7,8,9. Rows 7,8,9 */
+    grid-column: 7 / span 3;
+    grid-row: 7 / span 3;
+    border-radius: 50%; /* Makes it circular */
+    border: 2px dashed #999;
+}
+
+
+/* Styling for game controls */
+#game-controls {
+    margin-top: 20px;
+}
+
+#roll-dice-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#roll-dice-btn:hover {
+    background-color: #0056b3;
+}
+
+#dice-display {
+    font-size: 2em;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#current-player-display {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Pawn Styling (will be added via JavaScript) */
+.pawn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute; /* Will be positioned dynamically by JS */
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: white;
+    cursor: pointer;
+    z-index: 10; /* Make sure pawns are above the board cells */
+}
+
+.pawn.red { background-color: red; }
+.pawn.green { background-color: green; }
+.pawn.yellow { background-color: gold; }
+.pawn.blue { background-color: blue; }
